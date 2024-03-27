@@ -6,6 +6,10 @@ const props = defineProps<{
   id: number
 }>()
 
+const emits = defineEmits<{
+  complete: []
+}>()
+
 const word = idioms[props.id].word
 const idiom_en = idioms[props.id].idiom_en
 const idiom_ja = idioms[props.id].idiom_ja
@@ -26,6 +30,9 @@ const idiom_en_converted = computed<string>(() => {
 const onKeyDown = (e: KeyboardEvent) => {
   if (pos.value < end && e.key == idiom_en[pos.value] && !e.repeat) {
     pos.value++
+  }
+  if (pos.value == end) {
+    emits('complete')
   }
 }
 document.addEventListener('keydown', onKeyDown)
