@@ -22,6 +22,13 @@ const idiom_en_converted = computed<string>(() => {
   res += idiom_en.slice(end)
   return res
 })
+
+const onKeyDown = (e: KeyboardEvent) => {
+  if (pos.value < end && e.key == idiom_en[pos.value] && !e.repeat) {
+    pos.value++
+  }
+}
+document.addEventListener('keydown', onKeyDown)
 </script>
 
 <template>
