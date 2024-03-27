@@ -44,9 +44,15 @@ document.addEventListener('keydown', onKeyDown)
 </script>
 
 <template>
-  <p>{{ idiom_ja }}</p>
-  <p v-html="idiom_en_converted"></p>
+  <p class="x-large">{{ idiom_ja }}</p>
+  <p class="x-large monospace" v-html="idiom_en_converted"></p>
 </template>
 
 <style scoped>
+.monospace {
+  font-family: 'Source Code Pro', monospace;
+}
+.x-large {
+  font-size: x-large;
+}
 </style>
