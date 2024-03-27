@@ -10,11 +10,16 @@ const gameStart = () => {
   id.value = 0
   is_playing.value = true
 }
+
+const allComplete = () => {
+  alert('ゲームクリア！')
+  is_playing.value = false
+}
 </script>
 
 <template>
   <Title v-if="!is_playing" @game-start="gameStart()" />
-  <Game v-else :id="id" :key="id" @complete="id++" />
+  <Game v-else :id="id" :key="id" @complete="id++" @all-complete="allComplete()" />
 </template>
 
 <style scoped>

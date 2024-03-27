@@ -8,6 +8,7 @@ const props = defineProps<{
 
 const emits = defineEmits<{
   complete: []
+  allComplete: []
 }>()
 
 const word = idioms[props.id].word
@@ -32,7 +33,11 @@ const onKeyDown = (e: KeyboardEvent) => {
     pos.value++
   }
   if (pos.value == end) {
-    emits('complete')
+    if (props.id + 1 < idioms.length) {
+      emits('complete')
+    } else {
+      emits('allComplete')
+    }
   }
 }
 document.addEventListener('keydown', onKeyDown)
